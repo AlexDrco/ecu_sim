@@ -7,7 +7,7 @@ void initRandomSeed() {
   randomSeed(analogRead(0));  // Use an unconnected analog pin to seed the random number generator
 }
 
-// Function to generate a random value within a range, with a 40% chance to modify
+// Function to generate a random value within a range, with a 50% chance to modify
 unsigned char randomValueInRange(unsigned char originalValue, int range) {
   // Randomly decide whether to modify the value (40% chance)
   if (rand() % 2 != 0) {
@@ -58,6 +58,7 @@ unsigned char O2B1S4[7] = { 0x06, 0x41, 0x17, 0x2D, 0x00, 0xB9, 0x93 };         
 unsigned char O2B2S1[7] = { 0x06, 0x41, 0x18, 0x2D, 0x00, 0xB9, 0x93 };                               // PID 18 - Unit V (0-1.275), Current Value: 0.45V
 unsigned char O2B2S2[7] = { 0x06, 0x41, 0x19, 0x2D, 0x00, 0xB9, 0x93 };                               // PID 19 - Unit V (0-1.275), Current Value: 0.45V
 unsigned char SupportedPIDs2[7] = { 0x06, 0x41, 0x20, 0xFF, 0xFF, 0xFF, 0xFF };                       // PID 20 - Bit Encoded;
+unsigned char MilDistance[7] = { 0x06, 0x41, 0x21, 0x00, 0x00, 0x00, 0x00 };                          // MIL Dist PID 21 - Unit km (0-65535), Current Value: 0 km
 unsigned char O2B2S3[7] = { 0x06, 0x41, 0x1A, 0x2D, 0x00, 0xB9, 0x93 };                               // PID 1A - Unit V (0-1.275), Current Value: 0.45V
 unsigned char O2B2S4[7] = { 0x06, 0x41, 0x1B, 0x2D, 0x00, 0xB9, 0x93 };                               // PID 1B - Unit V (0-1.275), Current Value: 0.45V
 unsigned char OBDCompliance[7] = { 0x06, 0x41, 0x1C, 0x01, 0x00, 0xB9, 0x93 };                        // PID 1C - Bit Encoded, Current Value: 1
@@ -107,6 +108,7 @@ unsigned char AcceleratorPosD[7] = { 0x06, 0x41, 0x49, 0x1E, 0x00, 0xB9, 0x93 };
 unsigned char AcceleratorPosE[7] = { 0x06, 0x41, 0x4A, 0x1E, 0x00, 0xB9, 0x93 };                      // PID 4A - Unit % (0-100), Current Value: 30%
 unsigned char AcceleratorPosF[7] = { 0x06, 0x41, 0x4B, 0x1E, 0x00, 0xB9, 0x93 };                      // PID 4B - Unit % (0-100), Current Value: 30%
 unsigned char ThrottleActuator[7] = { 0x06, 0x41, 0x4C, 0x1E, 0x00, 0xB9, 0x93 };                     // PID 4C - Unit % (0-100), Current Value: 30%
+unsigned char RunTimeMIL[7] = { 0x06, 0x41, 0x4D, 0x00, 0x00, 0x00, 0x00 };                           // Mil Time PID 4D - Unit seconds (0-65535), Current Value: 0 seconds
 unsigned char TimeSinceDTC[7] = { 0x06, 0x41, 0x4E, 0xD7, 0xD7 };                                     // Clr Time PID 4E - Unit seconds (8-20 hours)
 unsigned char MaxFuelAirEquivalence[7] = { 0x06, 0x41, 0x4F, 0x80, 0x00, 0xB9, 0x93 };                // PID 4F - Ratio (0-2), Current Value: 1.0
 unsigned char MaxMAF[7] = { 0x06, 0x41, 0x50, 0x32, 0x00, 0xB9, 0x93 };                               // PID 50 - Unit g/s (0-655.35), Current Value: 50 g/s
@@ -148,9 +150,6 @@ unsigned char Odometer[8] = { 0x06, 0x41, 0xA6, 0x00, 0x0F, 0x42, 0x40 };       
 unsigned char SupportedPIDs7[7] = { 0x06, 0x41, 0xC0, 0x00, 0x00, 0x00, 0x00 };                       // PID C0 - Bit Encoded;
 // END PIDS
 
-// Static values
-unsigned char MilDistance[7] = { 0x06, 0x41, 0x21, 0x00, 0x00, 0x00, 0x00 };                          // MIL Dist PID 21 - Unit km (0-65535), Current Value: 0 km
-unsigned char RunTimeMIL[7] = { 0x06, 0x41, 0x4D, 0x00, 0x00, 0x00, 0x00 };                           // Mil Time PID 4D - Unit seconds (0-65535), Current Value: 0 seconds
 
 void handleMode01(unsigned char *buf, mcp2515_can &CAN) {
   switch (buf[2]) {
