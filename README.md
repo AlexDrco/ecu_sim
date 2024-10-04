@@ -12,8 +12,6 @@ A simulated Engine Control Unit (ECU) for Arduino using a CAN Bus shield to mimi
 
 OBD-II (On-Board Diagnostics II) allows for standardized diagnostics of automotive systems. This simulator aims to replicate those diagnostics for educational or development purposes.
 
-> "This ECU simulator provides a bridge between theoretical knowledge of automotive electronics and practical application."
-
 ## Supported Commands
 
 -  MODE 1 Used for "live" sensor data, most relevant are provided but adding new ones is straight forward.
