@@ -15,13 +15,12 @@ OBD-II (On-Board Diagnostics II) allows for standardized diagnostics of automoti
 > "This ECU simulator provides a bridge between theoretical knowledge of automotive electronics and practical application."
 
 
-## Tech Stack
+## Required
 
-This project uses a blend of technologies to simulate an ECU:
-
-- **Arduino IDE** - Development environment for Arduino.
-- **CAN Bus Shield** - For Arduino to communicate via CAN protocol.
-- **Serial Communication** - For debugging and monitoring the Arduino's behavior.
+- **Arduino + Arduino IDE**
+- **CAN Bus Shield v2**
+- **OBD Female connector**
+- **12V power source**
 
 
 ## Usage
@@ -30,10 +29,12 @@ To set up your Arduino CAN ECU Simulator:
 
 1. **Hardware Setup**:
    - Connect your Arduino to the CAN Bus shield.
-   - Ensure all wiring is correct according to the shield's documentation.
+   - 12v only required for powering scanning device.
    
+   ![alt text](diagram.jpg)
 
 2. **Software**:
 
    - Open in Arduino IDE
    - Install Seeduino Can Bus library
+   - SPI Pin for CAN Bus Shield is pin 9, other versions use pin 10.
