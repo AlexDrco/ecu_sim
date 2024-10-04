@@ -14,18 +14,21 @@ OBD-II (On-Board Diagnostics II) allows for standardized diagnostics of automoti
 
 > "This ECU simulator provides a bridge between theoretical knowledge of automotive electronics and practical application."
 
+## Supported Commands
 
-## Required
+-  MODE 1 Used for "live" sensor data, most relevant are provided but adding new ones is straight forward.
+- MODE 2  Used for Freeze Frames of when an error code is detected. Not implemented.
+- MODE 3 Used for Error Codes.
+- MODE 9 Used for Vehicle data (VIN, calibration id, etc).
+
+
+## Usage
 
 - **Arduino + Arduino IDE**
 - **CAN Bus Shield v2**
 - **OBD Female connector**
 - **12V power source**
 
-
-## Usage
-
-To set up your Arduino CAN ECU Simulator:
 
 1. **Hardware Setup**:
    - Connect your Arduino to the CAN Bus shield.
